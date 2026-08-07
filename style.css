@@ -1,0 +1,168 @@
+/* ==========================================================================
+   ugurmertyasar.com
+   Palette encodes the research: --formal = state/law, --informal = family/community.
+   Edit values here and every page follows.
+   ========================================================================== */
+
+:root {
+  --paper:     #f4f6f3;
+  --paper-alt: #eaeee9;
+  --ink:       #14202a;
+  --muted:     #5c6b72;
+  --rule:      #d3d9d2;
+  --formal:    #2b5f7e;   /* state, law, enforcement by public institutions */
+  --informal:  #7c7a36;   /* family, community, religion */
+
+  --serif: "Spectral", Georgia, "Times New Roman", serif;
+  --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --measure: 34rem;   /* comfortable reading width */
+  --wide:    72rem;   /* page container */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171c20; --paper-alt: #1f262b; --ink: #e6ebe8;
+    --muted: #9aa8ae; --rule: #303a40;
+    --formal: #7fa8bd; --informal: #b9b56a;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-variant-numeric: oldstyle-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 1.5rem; }
+
+/* --- utility type ------------------------------------------------------- */
+.label {
+  font-family: var(--sans);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: .18em; }
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible { outline: 2px solid var(--formal); outline-offset: 3px; border-radius: 2px; }
+
+/* --- masthead ------------------------------------------------------------ */
+.masthead {
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem;
+  align-items: baseline; justify-content: space-between;
+  padding: 2.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.masthead .name {
+  font-size: 1.125rem; font-weight: 600; letter-spacing: .01em;
+  text-decoration: none;
+}
+.nav { display: flex; gap: 1.5rem; }
+.nav a { font-family: var(--sans); font-size: .8125rem; letter-spacing: .06em;
+         text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
+
+/* --- hero ---------------------------------------------------------------- */
+.hero { padding: 4rem 0 2.5rem; display: grid; gap: 2.5rem;
+        grid-template-columns: minmax(0,1fr) 15rem; align-items: start; }
+.hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  line-height: 1.08; font-weight: 400; letter-spacing: -.015em; margin: .4rem 0 1.25rem;
+}
+.hero p { max-width: var(--measure); margin: 0 0 1rem; }
+.hero .portrait { width: 100%; border-radius: 2px; display: block;
+                  filter: saturate(.85) contrast(1.02); }
+
+/* --- links row ----------------------------------------------------------- */
+.links { display: flex; flex-wrap: wrap; gap: .5rem .75rem; margin-top: 1.5rem; padding: 0; list-style: none; }
+.links a {
+  font-family: var(--sans); font-size: .8125rem; letter-spacing: .02em;
+  text-decoration: none; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 999px; padding: .3rem .85rem;
+  display: inline-block;
+}
+.links a:hover { border-color: var(--formal); color: var(--formal); }
+
+/* --- plate (the map figure) ---------------------------------------------- */
+.plate { margin: 3rem 0 4rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.plate figure { margin: 0; }
+.plate .plate-head { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem;
+                     align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; }
+.plate h2 { font-size: 1.375rem; font-weight: 400; margin: 0; }
+.plate img { width: 100%; height: auto; display: block; }
+.plate figcaption { margin-top: 1.25rem; max-width: 46rem; color: var(--muted);
+                    font-size: .9375rem; }
+
+.stats { display: flex; flex-wrap: wrap; gap: 2rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.stats div { min-width: 6rem; }
+.stats .n { font-size: 1.75rem; line-height: 1.1; display: block;
+            font-variant-numeric: lining-nums; }
+
+/* --- sections ------------------------------------------------------------ */
+.section { border-top: 1px solid var(--rule); padding: 2.5rem 0; }
+.section > h2 { font-size: 1.5rem; font-weight: 400; margin: .5rem 0 1.5rem; }
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 1rem; }
+
+/* --- research threads ---------------------------------------------------- */
+.thread { padding: 1.75rem 0; border-top: 1px dotted var(--rule); }
+.thread:first-of-type { border-top: none; }
+.thread > h3 { font-size: 1.1875rem; font-weight: 500; margin: 0 0 .35rem; }
+.thread > p  { max-width: var(--measure); color: var(--muted); margin: 0 0 1.25rem; }
+
+.paper { padding: 1rem 0 1rem 1.25rem; border-left: 2px solid var(--rule); margin-bottom: .5rem; }
+.paper h4 { font-size: 1.0625rem; font-weight: 500; margin: 0 0 .3rem; line-height: 1.4; }
+.paper .authors { color: var(--muted); font-size: .9375rem; margin: 0 0 .5rem; }
+.paper .status { display: inline-block; font-family: var(--sans); font-size: .6875rem;
+                 letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+                 border: 1px solid var(--rule); border-radius: 2px; padding: .1rem .5rem; }
+.paper details { margin-top: .75rem; }
+.paper summary { font-family: var(--sans); font-size: .8125rem; color: var(--formal);
+                 cursor: pointer; }
+.paper details p { max-width: var(--measure); margin: .75rem 0 0; font-size: .9375rem; }
+
+/* --- interactive figure -------------------------------------------------- */
+.fig { border: 1px solid var(--rule); border-radius: 2px; padding: 1.5rem; margin: 1.5rem 0;
+       background: var(--paper-alt); }
+.fig .fig-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem;
+                     margin-bottom: 1rem; }
+.fig button {
+  font-family: var(--sans); font-size: .8125rem; color: var(--paper);
+  background: var(--ink); border: 0; border-radius: 999px; padding: .45rem 1rem; cursor: pointer;
+}
+.fig button:hover { background: var(--formal); }
+.fig button:focus-visible { outline: 2px solid var(--formal); outline-offset: 3px; }
+.fig .legend { display: flex; flex-wrap: wrap; gap: 1rem; font-family: var(--sans);
+               font-size: .75rem; color: var(--muted); }
+.fig .legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.fig .swatch { width: .625rem; height: .625rem; border-radius: 50%; display: inline-block; }
+.fig svg { width: 100%; height: auto; overflow: visible; }
+.fig .note { font-family: var(--sans); font-size: .75rem; color: var(--muted); margin: .75rem 0 0; }
+
+/* --- footer -------------------------------------------------------------- */
+footer { border-top: 1px solid var(--rule); margin-top: 2rem; padding: 2rem 0 4rem;
+         color: var(--muted); font-size: .875rem; }
+
+/* --- responsive ---------------------------------------------------------- */
+@media (max-width: 46rem) {
+  .hero { grid-template-columns: 1fr; padding-top: 2.5rem; }
+  .hero .portrait { max-width: 11rem; }
+  .stats { gap: 1.25rem 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
