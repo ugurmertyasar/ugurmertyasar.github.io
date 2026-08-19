@@ -1,30 +1,37 @@
 # ugurmertyasar.github.io
 
-Static personal site. No build step: these files *are* the site.
+Static site. No build step: these files *are* the site.
 
-## Files
-| Path | What it is |
-|---|---|
-| `index.html` | Home page |
-| `research.html` | Ongoing projects |
-| `style.css` | All styling. Palette variables at the top. |
-| `assets/coverage-map.svg` | 92-society coverage map |
-| `assets/portrait.jpg` | Headshot |
-| `assets/cv.pdf` | **Not yet added** — see below |
-| `_held/` | Written but deliberately not published |
+## Repository layout
+```
+index.html
+research.html
+style.css
+README.md
+assets/
+    portrait.jpg
+    cv.pdf          <- render from the Quarto source, then drop here
+```
 
 ## Common edits
-- **Colours / fonts** → top of `style.css`, in `:root`
-- **Number of societies** → search `92` in `index.html`
-- **Add a paper** → copy an `<article class="paper">` block in `research.html`
-- **New CV** → overwrite `assets/cv.pdf`, no other change needed
+- **Colours** -> `:root` at the top of `style.css`. Background is `--paper`.
+- **Add a paper** -> copy an `<article class="paper">` block in `research.html`
+- **New CV** -> overwrite `assets/cv.pdf`
 
-## `_held/enforcement-figure.html`
-An interactive figure showing the two dimensions of norm enforcement. Held back
-because it makes the argument of an unpublished paper very legible. To publish:
-paste the `<figure>` block into `research.html` and the `<script>` block just
-before `</body>`.
+## The map
+`index.html` contains the coverage map inline as SVG (~127 KB, ~46 KB over the
+wire). It has to be inline rather than an `<img>`, because an SVG loaded as an
+image is sealed off from the page and cannot be styled or made interactive.
+The block is fenced with `<!-- MAP -->` comments; scroll past it when editing.
 
-## To add the CV
-Open the CV in Google Docs → File → Download → PDF Document.
-Rename to `cv.pdf`, put it in `assets/`.
+Each country carries `data-n` (name) and `data-l` (survey language), and a
+`<title>` element so the names still work for screen readers and with
+JavaScript disabled.
+
+To regenerate it you need the world-atlas topology and the language table; ask
+Claude rather than hand-editing the path data.
+
+## Do not commit
+Anything you would not hand to a stranger. The repository is public and git
+keeps deleted files in history. The unpublished enforcement figure lives in
+`_held/` on the local machine and must stay there.
