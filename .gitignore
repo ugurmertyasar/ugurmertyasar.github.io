@@ -1,0 +1,12 @@
+.DS_Store
+.claude/
+CLAUDE.md
+_held/
+_preview_*.html
+
+# Full-size photo originals: keep the web copies in assets/, not these.
+CDR-StaffRetreat-*.JPG
+Ugur-*.jpg
+
+# Analysis scripts that do not belong to the site.
+*.R
