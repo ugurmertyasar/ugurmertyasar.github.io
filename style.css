@@ -101,6 +101,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
   display: block; border-radius: 2px;
 }
 
+.hero .portrait.is-flip { cursor: pointer; }
+.hero .portrait.is-flip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
 .links { display: flex; flex-wrap: wrap; gap: .5rem .75rem; margin: 1.75rem 0 0; padding: 0; list-style: none; }
 .links a {
   font-size: .8125rem; text-decoration: none; color: var(--ink);

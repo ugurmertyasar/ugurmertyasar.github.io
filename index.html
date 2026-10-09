@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261007">
+<link rel="stylesheet" href="style.css?v=20261009">
 </head>
 <body>
 
@@ -51,7 +51,11 @@
         <li><a href="assets/cv.pdf">CV</a></li>
       </ul>
     </div>
-    <img class="portrait" src="assets/portrait.jpg" width="960" height="1200" alt="Portrait of Ugur Mert Yasar">
+    <!-- Click the portrait to swap in an artwork. Put the artwork at the path in
+         data-alt; until that file exists, the portrait stays a plain image. -->
+    <img class="portrait" id="portrait" src="assets/portrait.jpg" width="960" height="1200"
+         alt="Portrait of Ugur Mert Yasar"
+         data-alt="assets/portrait-art.jpg" data-alt-text="Artwork">
   </section>
 
 </main>
@@ -106,6 +110,34 @@
 </footer>
 
 <script>
+/* Portrait: click or press Enter to swap between the photo and an artwork. */
+(function () {
+  var img = document.getElementById('portrait');
+  if (!img || !img.dataset.alt) return;
+  var a = { src: img.getAttribute('src'), alt: img.alt };
+  var b = { src: img.dataset.alt, alt: img.dataset.altText || '' };
+  var pre = new Image();
+  pre.onload = function () {               // only enable once the artwork exists
+    var on = false;
+    img.classList.add('is-flip');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-pressed', 'false');
+    img.title = 'Click me';
+    function flip() {
+      on = !on;
+      var x = on ? b : a;
+      img.src = x.src; img.alt = x.alt;
+      img.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    img.addEventListener('click', flip);
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+    });
+  };
+  pre.src = b.src;
+})();
+
 /* Coverage map: country and survey language on hover, or on tap for touch. */
 (function () {
   var wrap = document.querySelector('.map-wrap');
