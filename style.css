@@ -9,19 +9,19 @@
   --ink:       #1b1b1b;
   --muted:     #5f6368;
   --rule:      #e4e4e4;
-  --accent:    #2f5d74;   /* links, labels, masthead band */
+  --accent:    #800000;   /* links, labels, masthead band */
   --on-accent: #ffffff;
-  --band:      #2f5d74;   /* masthead background */
+  --band:      #800000;   /* masthead background */
   --footer:    #1b1b1b;
-  --formal:    #2f5d74;   /* state, law, public institutions */
+  --formal:    #800000;   /* state, law, public institutions */
   --informal:  #7a6a3a;   /* family, community, religion */
 
   --map-ocean:    #ffffff;
   --map-grat:     #dde3e7;
   --map-edge:     #c3ccd2;
   --map-bg:       #dcdcdc;
-  --map-hi:       #2f5d74;
-  --map-hi-hover: #1d3f51;
+  --map-hi:       #800000;
+  --map-hi-hover: #5a0000;
 
   --display: "Oswald", "Arial Narrow", sans-serif;
   --sans:    "Inter", "Helvetica Neue", Arial, sans-serif;
