@@ -247,7 +247,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
 
 @media (max-width: 46rem) {
   .hero { grid-template-columns: 1fr; gap: 0; padding-top: 2.5rem; }
-  .hero .portrait { order: -1; max-width: 15rem; margin: 0 0 2rem; }
+  .hero .portrait { order: -1; max-width: 15rem; margin: 0 auto 2rem; }
   .page-header { padding: 2rem 0 1.75rem; }
   .nav { gap: 1.25rem; }
   .stats li { padding-left: .75rem; padding-right: .5rem; }
